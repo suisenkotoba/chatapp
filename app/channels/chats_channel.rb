@@ -8,6 +8,9 @@ class ChatsChannel < ApplicationCable::Channel
   end
 
   def send_message (data)
-  	ActionCable.server.broadcast "chats_channel", message: data['message']
+  	ActionCable.server.broadcast "chats_channel", message: data['message'], name: current_user
+
+    # ActionCable.server.broadcast "chats_channel", message: ApplicationController.render(partial: 'messages/message',
+    #                              locals: { message: data['message'], username: current_user })
   end
 end

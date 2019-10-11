@@ -7,7 +7,7 @@ App.chats = App.cable.subscriptions.create "ChatsChannel",
 
   received: (data) ->
     # alert(data['message'])
-    $('#messages').append "<p>"+data['message']+"</p>"
+    $('#messages').append "<p>"+data['name']+" : "+data['message']+"</p>"
 
   send_message: (message) ->
     @perform 'send_message', message: message
